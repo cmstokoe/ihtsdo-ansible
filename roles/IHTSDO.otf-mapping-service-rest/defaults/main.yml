@@ -90,6 +90,13 @@ mail_smtp_from: "alice@alice.com"
 mail_smtp_to_feedback_user: "alice@alice.com"
 send_notification_recipients: "dave@dave.com;dave1@dave.com;dave2@dave.com"
 
+#Jira - authoring
+mapping_jira_AuthHeader: "Basic FAKESTRING"
+mapping_jira_defaultUrl: "https://jira.ihtsdotools.org/rest/api/2"
+mapping_jira_project: "MFTP"
+mapping_authoring_authHeader: "{{mapping_jira_AuthHeader}}"
+mapping_authoring_defaultUrl: "https://authoring.ihtsdotools.org"
+
 
 #----- IHTSDO.nginx-standard config ----
 nginx_version: 1.11.1-1~trusty

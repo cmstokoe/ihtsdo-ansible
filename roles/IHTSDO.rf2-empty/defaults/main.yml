@@ -1,0 +1,8 @@
+---
+
+#rf2_export_dir: ~/rf2export
+rf2_export_dir: /opt/rf2export
+rf2_export_fn: "testForBE"
+
+
+

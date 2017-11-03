@@ -1,0 +1,17 @@
+[program:{{refset_name}}]
+user = {{refset_user}}
+directory = /opt/%(program_name)s
+command = /usr/bin/java -Xms256m -Xmx{{refset_xmx}} -Drefset.config=/opt/%(program_name)s/config.properties -jar /opt/%(program_name)s/webapp-runner.jar refset-rest.war
+#startsecs=5
+#stopsignal=INT
+environment=LANG="en_US.UTF-8",LC_ALL="en_US.UTF-8"
+autostart = true
+autorestart = true
+stdout_logfile=/var/log/tomcat.log
+stdout_logfile_backups=5
+stderr_logfile_backups=5
+stdout_logfile_maxbytes=10485760
+stderr_logfile_maxbytes=10485760
+
+
+

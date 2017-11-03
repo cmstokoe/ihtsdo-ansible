@@ -1,0 +1,9 @@
+---
+  - hosts: localhost
+    #connection: local
+    #hosts: all
+    become: no
+    become_user: root
+    roles:
+      - IHTSDO.rf2-empty
+      
