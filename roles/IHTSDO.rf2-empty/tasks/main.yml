@@ -1,0 +1,25 @@
+---
+
+- name: Create {{rf2_export_dir}} directory
+  file: name={{rf2_export_dir}}  state=absent
+
+- name: Create {{rf2_export_dir}} directory
+  file: name={{rf2_export_dir}} mode=0755 state=directory  
+
+- debug: msg="role path = {{role_path}} user = {{ansible_user_id}}"
+
+- name: make the dirs
+  file: name={{rf2_export_dir}}{{ item | regex_replace(role_path+'/templates','')}} mode=0755 state=directory
+  with_items: "{{ lookup('pipe','find {{role_path}}/templates -type d').split('\n') }}"
+
+- name: Copying the templated jinja2 files
+  template: src={{item}} dest={{rf2_export_dir}}{{ item | regex_replace(role_path+'/templates','') | regex_replace('\.j2', '') }}
+  with_items: "{{ lookup('pipe','find {{role_path}}/templates -type f').split('\n') }}"
+ 
+- name: Create zip  
+  archive:
+    path: "{{rf2_export_dir}}/"
+    dest: "{{rf2_export_dir}}/{{rf2_export_fn}}.zip"
+    format: zip
+
+  

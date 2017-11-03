@@ -78,5 +78,9 @@
   template: src=settings.xml dest=/home/{{refset_user}}/.m2/settings.xml
             owner={{ refset_user }} group={{ refset_user }} mode=0640         
 
+- name: Configure supervisor
+  template: src=supervisor.conf.j2 dest="{{ supervisor_dir }}/{{ refset_name }}.conf"
+              owner=root group=root mode=0640  
+
 - name: (re)start refset-service
   supervisorctl: name={{ refset_name }}  state=restarted
