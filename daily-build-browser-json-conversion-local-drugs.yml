@@ -4,14 +4,14 @@
     vars:
      rf2json_s3_bucket_name: s3://dailybuild-ihtsdo/drugs
      dailybuild_url: https://release.ihtsdotools.org/api/v1/centers/international/products/snomed_ct_drugs_product_hierarchy_modeling_tech_preview/builds/
-     unpacked_release_file_name: SnomedCT_DrugsProductHierarchyModelingTechPreview_INT_20170131
-     release_file_name: SnomedCT_DrugsProductHierarchyModelingTechPreview_INT_20170131.zip
+     unpacked_release_file_name: SnomedCT_DrugsProductHierarchyModelingTechPreview_INT_20180131
+     release_file_name: SnomedCT_DrugsProductHierarchyModelingTechPreview_INT_20180131.zip
      config_xml: enConfig-drugs.xml.j2
      editionName: "International Drugs"
-     effectiveTime: 20170131
-     expirationTime: 20170731
+     effectiveTime: 20180131
+     expirationTime: 20190131
      # One date after the previous release
-     rf2_diff_start_date: 20160801
+     rf2_diff_start_date: 20180201
     roles:
       - IHTSDO.aws
       - IHTSDO.daily-build-browser-json-conversion

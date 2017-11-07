@@ -121,7 +121,7 @@ mapping_data_doc_dir: "{{mapping_data_dir}}/doc"
 mapping_base_url: "https://{{inventory_hostname}}"
 mapping_deploy_title: "Mapping Tool"
 mapping_metadata_service_handler: "SNOMEDCT,SNOMEDCT_US,ICD10,ICD10CM,ICD9CM,ICPC,GMDN,ICDO"
-
+mapping_deploy_title: "Mapping Tool UAT"
 
 # true false.
 load_example_data: false
