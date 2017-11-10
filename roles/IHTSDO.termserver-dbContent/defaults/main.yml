@@ -15,7 +15,7 @@ term_serv_resources_dir: "resources"
 # Dir name where resources go
 term_serv_index_dir: "termserver_indexes"
 # Dir name where templates go
-term_serv_template_dir: "template-store"
+term_serv_template_dir: "snomed-templates"
 #Term Serv Resources dir
 term_serv_dir_resources: "{{term_serv_dir}}/{{ term_serv_resources_dir }}"
 #Term Serv Indexes dir
@@ -61,7 +61,7 @@ import_term_serv_templates: "{{import_term_serv_dataset}}/{{ term_serv_template_
 #target dir for term_serv_indexes
 target_term_serv_indexes: "/opt/{{ term_serv_index_dir }}"
 #target dir for term_serv_templates
-target_term_serv_templates: "/opt/snomed-template-service/"
+target_term_serv_templates: "/opt/snomed-template-service/snomed-templates"
 
 traceability_database: traceability
 
@@ -70,4 +70,3 @@ new_restore_script: term_mysql_restore.sh
 restore_cmd: "{{ script_dir }}/{{ new_restore_script }}"
 restore_log: "{{ script_dir }}/restore_{{ ansible_date_time.iso8601 }}.log"
 full_restore_cmd: "{{ restore_cmd }} >> {{ restore_log }}"
-
