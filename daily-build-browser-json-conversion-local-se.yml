@@ -3,7 +3,7 @@
     vars:
      rf2json_s3_bucket_name: s3://dailybuild-ihtsdo/se
      dailybuild_url: https://release.ihtsdotools.org/api/v1/centers/se/products/snomed_ct_se_daily_build/builds/
-     unpacked_release_file_name: SnomedCT_ManagedServiceSE1000052_20171130
+     unpacked_release_file_name: SnomedCT_SE_Production_20171130T120000
      release_file_name: "{{unpacked_release_file_name}}.zip"
      config_xml: seConfig.xml.j2
      editionName: "Swedish"
