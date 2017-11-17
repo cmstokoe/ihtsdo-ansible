@@ -46,9 +46,9 @@ snomed:
     maxReasonerCount: 1
     maxReasonerRuns: 100000
     externalService:
-      url: "https://{{ ansible_nodename }}/"
-      userName: "not used"
-      password: "not used"
+      url: "{{ ts_classification_service_endpoint}}"
+      userName: "{{ ts_classification_service_username }}"
+      password: "{{ ts_classification_service_password }}"
       timeBetweenPollTries: 5000
       numberOfPollTries: 120
 
