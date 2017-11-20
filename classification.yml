@@ -1,0 +1,7 @@
+---
+  - hosts: classification
+    sudo: true
+    roles: 
+      - IHTSDO.classification-service
+      - IHTSDO.nginx-standard
+

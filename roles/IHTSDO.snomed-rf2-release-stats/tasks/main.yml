@@ -22,6 +22,10 @@
 #- debug: var=stat_dl_results.stdout_lines
 #- debug: var=mrcm_dl_results.stdout_lines
 
+- name: Install latest mrcm stats generation jar
+  maven_artifact: group_id=org.ihtsdo artifact_id=mrcm-validator repository_url={{ maven_repo }} dest={{release_stats_dir}}/stats-gen.jar
+
+
 - name: Install zip
   apt: name=zip state=present update_cache=yes cache_valid_time=300
   when: ansible_os_family == "Debian"
