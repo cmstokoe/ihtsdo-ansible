@@ -2,11 +2,11 @@
   - hosts: local
     sudo: true
     vars:
-     effectiveTime: 20180131
-     expirationTime: 20180731
-     unpacked_release_file_name: SnomedCT_InternationalRF2_Production_20180131T120000Z
+     effectiveTime: 20180731
+     expirationTime: 20190131
+     unpacked_release_file_name: SnomedCT_InternationalRF2_Production_20180731T120000Z
      # One date after the previous release
-     rf2_diff_start_date: 20170801
+     rf2_diff_start_date: 20180201
     roles:
       - IHTSDO.aws
       - IHTSDO.daily-build-browser-json-conversion
