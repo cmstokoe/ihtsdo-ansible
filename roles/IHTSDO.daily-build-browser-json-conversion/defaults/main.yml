@@ -5,9 +5,9 @@ rf2_diff_jar_version: rf2-diff-generator-1.5-jar-with-dependencies.jar
 version_rf2_json: "1.2"
 rf2_to_json_jar_version: rf2-to-json-conversion-1.2-jar-with-dependencies.jar
 
-effectiveTime: 20170731
-expirationTime: 20180131
-unpacked_release_file_name: SnomedCT_RF2Release_INT_20170731
+effectiveTime: 20180731
+expirationTime: 20190131
+unpacked_release_file_name: SnomedCT_RF2Release_INT_20180731
 # One date after the previous release
 rf2_diff_start_date: 20170801
 
