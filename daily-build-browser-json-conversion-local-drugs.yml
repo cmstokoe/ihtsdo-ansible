@@ -8,8 +8,8 @@
      release_file_name: SnomedCT_DrugsProductHierarchyModelingTechPreview_INT_20180131.zip
      config_xml: enConfig-drugs.xml.j2
      editionName: "International Drugs"
-     effectiveTime: 20180131
-     expirationTime: 20190131
+     effectiveTime: 20180731
+     expirationTime: 20190731
      # One date after the previous release
      rf2_diff_start_date: 20180201
     roles:
