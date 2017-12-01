@@ -38,7 +38,7 @@ ts_orchestration_jms_url: "change_me"
 ts_orchestration_jms_username: "change_me"
 ts_orchestration_jms_password: "change_me"
 
-ts_classification_service_endpoint: ""
+ts_classification_service_endpoint: "change_me"
 ts_classification_service_username: " change me "
 ts_classification_service_password: " change_me "
 
