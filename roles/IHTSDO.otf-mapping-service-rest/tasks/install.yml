@@ -24,7 +24,7 @@
   when: mapping_version == 'latest'
 
 - name: Install package specific version
-  apt: name={{mapping_admin_app_name}}={{ version_mapping }} state=installed
+  apt: name={{mapping_admin_app_name}}={{ mapping_version }} state=installed
   when: mapping_version != 'installed' and mapping_version != 'latest'
 
   
