@@ -10,9 +10,9 @@ snomed_release_service_api_releaseValidationFramework_url: http://localhost/rvf/
 snomed_release_service_api_file_processing_failure_max_retries: 3
 telemetry_email_address_to_default: pwi@ihtsdo.org
 telemetry_email_address_from: IHTSDO Telemetry <delivery@ihtsdo.org>
-telemetry_smtp_username: 
-telemetry_smtp_password: 
-telemetry_smtp_host: 
+telemetry_smtp_username:
+telemetry_smtp_password:
+telemetry_smtp_host:
 telemetry_smtp_port: 465
 telemetry_smtp_ssl: true
 environment_shortname: UNKNOWN
@@ -28,9 +28,11 @@ old_db: true
 srs_api_xms: "1024m"
 srs_api_xmx: "6g"
 srs_basicauth_username: "changeme"
-srs_basicauth_password: "changeme" 
+srs_basicauth_password: "changeme"
 srs_snowowl_url: "changeme"
 srs_snowowl_flatexport: true
 srs_snowowl_reasoner: "org.semanticweb.elk.elk.reasoner.factory"
 
-
+srs_external_classification_url: "change_me"
+srs_external_classification_username: "change_me"
+srs_external_classification_password: "change_me"

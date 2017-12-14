@@ -26,7 +26,7 @@ executionBucketName = {{ snomed_release_service_api_aws_executionBucketName }}
 buildBucketName = {{ snomed_release_service_api_aws_buildBucketName }}
 publishedBucketName = {{ snomed_release_service_api_aws_publishedBucketName }}
 
-#Default email address for Telemetry Server to contact when a service reports an exception 
+#Default email address for Telemetry Server to contact when a service reports an exception
 #TODO Allow for contacts to be specified on a per service basis
 telemetry.email.address.to = {{ telemetry_email_address_to }}
 telemetry.email.address.from = {{ telemetry_email_address_from }}
@@ -51,3 +51,6 @@ snowowl.url = {{ srs_snowowl_url }}
 snowowl.flatIndexExportStyle = {{ srs_snowowl_flatexport }}
 snowowl.reasonerId = {{ srs_snowowl_reasoner }}
 
+external.classifier.url = {{ srs_external_classification_url }}
+external.classifier.username= {{ srs_external_classification_username }}
+external.classifier.password= {{ srs_external_classification_password }}
