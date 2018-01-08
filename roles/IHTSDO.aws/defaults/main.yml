@@ -1,5 +1,3 @@
-s3region: us-east-1
-
-aws_dir: "/opt/aws"
-
-s3_inc_new: False
+aws_access_id: ""
+aws_secret_key: ""
+aws_s3region: us-east-1
