@@ -1,46 +1,18 @@
 ---
 
-#- name: Install Python PIP
-#  apt: pkg=python-pip state=latest
-
-#- name: Install boto via PIP
-#  pip: name=boto state=latest
-
-#- name: Install AWS CLI
-#  pip: name=awscli state=latest
-
-#- name: Update apt cache
-#  apt: update_cache=yes cache_valid_time=3600
-#  sudo: yes
-  
 - name: Check if awscli is installed
   command: dpkg -s awscli
   register: package_check_deb
-  ignore_errors: yes 
-  
-- debug: msg="package_check_deb.rc  =  {{ package_check_deb.rc }} "   
+  ignore_errors: yes
+
+- debug: msg="package_check_deb.rc  =  {{ package_check_deb.rc }} "
 
 - name: Install awscli
   apt: name=awscli state=present update_cache=yes cache_valid_time=300
-  when: package_check_deb.rc == 1  
+  when: package_check_deb.rc == 1
 
-#- name: ensure AWS CLI is installed
-#  apt: pkg=awscli state=latest
-  
 - name: Assures ~/.aws dir exists
   file: path=~/.aws state=directory
-  
+
 - name: Create config file in .aws
   template: src=s3config.j2 dest=~/.aws/config mode=0600
-  when: aws_s3accessKey is defined   
-  
-- name: Assures {{ aws_dir }} dir exists
-  file: path="{{aws_dir}}" state=directory  
-  
-- name: Create std scripts file in /opt/aws
-  template: src=s3filecopyfromaws.sh.j2 dest="{{aws_dir}}/s3filecopyfromaws.sh" mode=0770
-  when: aws_s3accessKey is defined 
-  
-- name: Create std scripts file in /opt/aws
-  template: src=s3filecopytoaws.sh.j2 dest="{{aws_dir}}/s3filecopytoaws.sh" mode=0770
-  when: aws_s3accessKey is defined     
