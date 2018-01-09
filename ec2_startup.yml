@@ -4,4 +4,10 @@
   gather_facts: False
   tasks:
     - name: Start instance
-      command: /usr/bin/aws ec2 start-instances --instance-ids {{ id }}
+      ec2:
+        ec2_secret_key: "{{ aws_ec2secret }}"
+        ec2_access_key: "{{ aws_ec2accesskey }}"
+        region: "us-east-1"
+        state: running
+        instance_ids: "{{ id }}"
+        wait: yes
