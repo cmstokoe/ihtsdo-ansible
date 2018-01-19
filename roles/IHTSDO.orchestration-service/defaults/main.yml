@@ -17,6 +17,7 @@ orchestration_snowowl_import_timeout: 90
 orchestration_snowowl_classification_timeout: 10
 orchestration_snowowl_flatIndexExportStyle: true
 orchestration_rvf_failureExportMax: 100
+orchestration_rvf_productName: ""
 
 # AWS 'dev-ts-sync' user
 orchestration_aws_key:
