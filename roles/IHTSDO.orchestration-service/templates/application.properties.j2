@@ -13,6 +13,9 @@ snowowl.classification.timeout = {{ orchestration_snowowl_classification_timeout
 snowowl.flatIndexExportStyle = {{ orchestration_snowowl_flatIndexExportStyle }}
 ts.reportsBucket = {{ orchestration_ts_reportsBucket }}
 ts.rvf.failureExportMax = {{ orchestration_rvf_failureExportMax }}
+{% if orchestration_rvf_productName %}
+ts.rvf.product.name = {{ orchestration_rvf_productName }}
+{% endif %}
 
 # AWS 'dev-ts-sync' user
 aws.key = {{ orchestration_aws_key }}
