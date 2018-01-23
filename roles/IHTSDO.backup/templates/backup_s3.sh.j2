@@ -22,11 +22,11 @@ db_host={{backup_db_host}}
 db_port={{backup_db_port}}
 db_include=({% for db in backup_db_names %}"{{db}}" {% endfor %})
 
-# If Postgres and not using default postgres admin user (postgres) 
+# If Postgres and not using default postgres admin user (postgres)
 # then instead make sure there is a Postgres .pgpass file
-# ( format : localhost:5432:mydbname:postgres:mypass ) make sure chmod 600 
+# ( format : localhost:5432:mydbname:postgres:mypass ) make sure chmod 600
 db_user={{backup_db_user}}
-db_password={{backup_db_password}} 
+db_password={{backup_db_password}}
 
 DAILY="daily"
 WEEKLY="weekly"
@@ -103,22 +103,22 @@ check_arguments() {
 	fi
 	if [ "x$s3_backup_dir" = "x" ]; then
 		error_exit "Please set the variable s3_backup_dir before running this script. Exiting with error."
-	fi	
+	fi
 	if [ "x$DAY_OF_WEEK" = "x" ]; then
 		error_exit "Please set the variable DAY_OF_WEEK before running this script. Exiting with error."
 	fi
 	if [ "x$DAY_OF_MONTH" = "x" ]; then
 		error_exit "Please set the variable DAY_OF_MONTH before running this script. Exiting with error."
-	fi	
+	fi
 	if [ "x$DAY_OF_YEAR" = "x" ]; then
 		error_exit "Please set the variable DAY_OF_YEAR before running this script. Exiting with error."
-	fi	
+	fi
 	if [ "x$HOST_NAME" = "x" ]; then
 		error_exit "Please set the variable HOST_NAME before running this script. Exiting with error."
-	fi	
+	fi
 	if [ "x$APP_NAME" = "x" ]; then
 		error_exit "Please set the variable APP_NAME before running this script. Exiting with error."
-	fi	
+	fi
 	if [ "x$db_type" = "x" ]; then
 		error_exit "Please set the variable db_type before running this script. Exiting with error."
 	fi
@@ -131,7 +131,7 @@ check_arguments() {
 	if [ "x$db_port" = "x" ]; then
 		error_exit "Please set the variable db_port before running this script. Exiting with error."
 	fi
-	
+
 	if [ "x$db_include" = "x" ]; then
 		error_exit "Please set the variable db_include before running this script. Exiting with error."
 	fi
@@ -139,7 +139,7 @@ check_arguments() {
 	if [ "x$db_user" = "x" ]; then
 		error_exit "Please set the variable db_user before running this script. Exiting with error."
 	fi
-	
+
 	if [ "x$db_password" = "x" ]; then
 		error_exit "Please set the variable db_password before running this script. Exiting with error."
 	fi
@@ -217,19 +217,19 @@ echo "Finished post_cmd"
 
 copyfiles(){
 for dir in ${dirs_to_backup[*]};
-        do  
+        do
         echo "Copying dir = "${dir} " to " $ABSOLUTE_ARCHIVE_PREFIX
         cp --recursive --parents ${dir} $ABSOLUTE_ARCHIVE_PREFIX
-        done 
+        done
 	echo_date "Done Copying files."
 }
 
 rsyncfiles(){
 for dir in ${dirs_to_backup[*]};
-        do  
+        do
         echo "rsyncing dir = "${dir} " to " $ABSOLUTE_ARCHIVE_PREFIX
         /usr/bin/rsync  -av --delete --no-compress ${dir} $ABSOLUTE_ARCHIVE_PREFIX
-        done 
+        done
 	echo_date "Done rsync'ing files."
 }
 
@@ -262,14 +262,14 @@ rest_call() {
 }
 
 
-backup_db() {	
+backup_db() {
 EXITCODE=99
-	cd "$tmp_backup_dir"	
+	cd "$tmp_backup_dir"
 	echo_date "Creating db dump file in dir $ABSOLUTE_ARCHIVE_PREFIX"
-	
+
 # then for each db in db_include
         for db in ${db_include[*]};
-        do  
+        do
                 echo "db = "${db}
                 EXITCODE=99
                 DATABASE_DUMP_FILE="${db}.sql"
@@ -279,51 +279,51 @@ echo "dbtype = postgres : " $db_type
                         if [ "$db_user" = "postgres" ]; #we assume the db is locally hosted
                         then
                           if [ "$db" = "all" ];
-                             then 
+                             then
                                 su - postgres -c "/usr/bin/pg_dumpall -i -c -o -f '$ABSOLUTE_ARCHIVE_PREFIX/$DATABASE_DUMP_FILE'"
                                 EXITCODE=$?
                              else
                                 su - postgres -c "/usr/bin/pg_dump ${db}"  > "$ABSOLUTE_ARCHIVE_PREFIX/$DATABASE_DUMP_FILE"
                                 EXITCODE=$?
-                             fi   
-                                
-                        else 
+                             fi
+
+                        else
                         if [ "$db" = "all" ];
                              then
                                 /usr/bin/pg_dumpall -i -U${db_user} -h${db_host} -p${db_port} -c -o -f "$ABSOLUTE_ARCHIVE_PREFIX/$DATABASE_DUMP_FILE"
                                 EXITCODE=$?
-                             else   
+                             else
                                 /usr/bin/pg_dump -U${db_user} -h${db_host} -p${db_port} ${db}  > "$ABSOLUTE_ARCHIVE_PREFIX/$DATABASE_DUMP_FILE"
                                 EXITCODE=$?
-                             fi                                  
+                             fi
                         fi
- fi      
+ fi
  if [ "$db_type" = "mysql" ];
-  then 
+  then
    #DB_STR="--databases "$db
    DB_STR=$db
  if [ "$db" = "all" ];
-then 
+then
   DB_STR="--all-databases"
  fi
 echo "DB_STR = "$DB_STR;
-echo "dbtype = mysql : " $db_type   
+echo "dbtype = mysql : " $db_type
      /usr/bin/mysqldump  --opt --single-transaction --routines --triggers --flush-privileges  --user=$db_user -p$db_password  $DB_STR > "$ABSOLUTE_ARCHIVE_PREFIX/$DATABASE_DUMP_FILE"
     EXITCODE=$?
- fi 
+ fi
 
-echo "$EXITCODE" >> "$ABSOLUTE_DBDUMP_STATUS" 
-if [ $EXITCODE -ne 0 ] ; then 
+echo "$EXITCODE" >> "$ABSOLUTE_DBDUMP_STATUS"
+if [ $EXITCODE -ne 0 ] ; then
       echo "DB backup failed with exit code $EXITCODE for DB : $db  DB type : $db_type"
  else
       echo "DB Backup finished ok for DB : $db"
- fi              
-    done 
-	echo_date "Done backing up DB."	
+ fi
+    done
+	echo_date "Done backing up DB."
 }
 
 testdbdumpchild(){
-#First see file exists    
+#First see file exists
 if [ -f $ABSOLUTE_DBDUMP_STATUS ]; then
    echo "File $ABSOLUTE_DBDUMP_STATUS exists."
    read dbdump_status < $ABSOLUTE_DBDUMP_STATUS
@@ -358,27 +358,27 @@ echo "ARCHIVE_FILE = $ARCHIVE_FILE"
 #Always copy to daily
 
 # /usr/bin/aws s3 cp $i $s3_backup_dir_full $s3_backup_region;
-echo "Making a daily back up using $cp_cmd $tmp_backup_dir/$ARCHIVE_FILE $s3_backup_dir_daily $s3_backup_region" 
-eval $cp_cmd $tmp_backup_dir/$ARCHIVE_FILE $s3_backup_dir_daily $s3_backup_region;
+echo "Making a daily back up using $cp_cmd $tmp_backup_dir/$ARCHIVE_FILE $s3_backup_dir_daily $s3_backup_region"
+eval $cp_cmd $tmp_backup_dir/$ARCHIVE_FILE $s3_backup_dir_daily $s3_backup_region || error_exit "S3 Upload issue";
 echo "Made a daily back up"
 #Copy from daily to weekly
 if [ "$DOW" = "$DAY_OF_WEEK" ];
 then
 echo "Making a weekly back up"
-eval $cp_cmd $s3_backup_dir_daily$ARCHIVE_FILE $s3_backup_dir_weekly $s3_backup_region;
+eval $cp_cmd $s3_backup_dir_daily$ARCHIVE_FILE $s3_backup_dir_weekly $s3_backup_region || error_exit "S3 Upload issue";
 fi
 #Copy from daily to monthly
 if [ "$DOM" = "$DAY_OF_MONTH" ];
 then
 echo "Making a Monthly back up"
-eval $cp_cmd $s3_backup_dir_daily$ARCHIVE_FILE $s3_backup_dir_monthly $s3_backup_region;
+eval $cp_cmd $s3_backup_dir_daily$ARCHIVE_FILE $s3_backup_dir_monthly $s3_backup_region || error_exit "S3 Upload issue";
 fi
 #Copy from daily to yearly
 #if 1st of year copy to yearly.
 if [ "$DOY" = "$DAY_OF_YEAR" ];
 then
 echo "Making a yearly back up"
-eval $cp_cmd $s3_backup_dir_daily$ARCHIVE_FILE $s3_backup_dir_yearly $s3_backup_region;
+eval $cp_cmd $s3_backup_dir_daily$ARCHIVE_FILE $s3_backup_dir_yearly $s3_backup_region || error_exit "S3 Upload issue";
 fi
 
 echo "Finished copying to AWS"
