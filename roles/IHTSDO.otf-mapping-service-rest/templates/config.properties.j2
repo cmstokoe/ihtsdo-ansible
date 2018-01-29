@@ -9,6 +9,17 @@ javax.persistence.jdbc.url={{ mapping_jdbc_url }}
 javax.persistence.jdbc.user={{ mapping_db_user }}
 javax.persistence.jdbc.password={{ mapping_db_pw }}
 
+
+# c3p0 config - http://www.mchange.com/projects/c3p0/
+hibernate.connection.provider_class=org.hibernate.connection.C3P0ConnectionProvider
+hibernate.c3p0.acquireIncrement=1
+hibernate.c3p0.maxIdleTime=3600
+hibernate.c3p0.idleConnectionTestPeriod=1800
+hibernate.c3p0.testConnectionOnCheckin=true
+hibernate.c3p0.maxConnectionAge=3600
+hibernate.c3p0.preferredTestQuery=select 1;
+hibernate.c3p0.acquire_increment=1
+
 #
 # JPA debugging settings
 #
@@ -29,6 +40,21 @@ hibernate.search.default.directory_provider=filesystem
 hibernate.jdbc.batch_size={{ mapping_batch_size }}
 hibernate.jdbc.default_batch_fetch_size={{ mapping_default_batch_fetch_size }}
 
+
+#
+# GMDN terminology sFTP
+#
+gmdnsftp.host=ftp.gmdnagency.org
+gmdnsftp.port=4432
+gmdnsftp.user={{ mapping_gmdnsftp_user }}
+gmdnsftp.password={{ mapping_gmdnsftp_password }}
+gmdnsftp.dir=/opt/mapping-data/GMDN/
+
+#
+#AWS connection keys
+#
+aws.access.key.id=EDIT_THIS
+aws.secret.access.key=EDIT_THIS
 
 #
 # SNOMEDCT data location
@@ -145,6 +171,11 @@ security.handler.IMS.class=org.ihtsdo.otf.mapping.jpa.handlers.ImsSecurityServic
 security.handler.IMS.url={{mapping_ims_url }}
 security.handler.IMS.url.logout={{ mapping_ims_logout }}
 
+#
+# Account for running mojos
+#
+admin.user={{ mapping_admin_user }}
+admin.password={{ mapping_admin_password }}
 
 #
 # URL for authoring tool and JIRA access
@@ -173,7 +204,7 @@ mail.smtp.to.feedback.user={{mail_smtp_to_feedback_user}}
 send.notification.recipients={{send_notification_recipients}}
 
 
-# test force exception with: 
+# test force exception with:
 # curl -H 'Authorization: bcarlsen' 'https://uat-mapping.ihtsdotools.org/mapping-rest/mapping/concept/id/9419002/unmappedDescendants/project/id/22'
 
 #

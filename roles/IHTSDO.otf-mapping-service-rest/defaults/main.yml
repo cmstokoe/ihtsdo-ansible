@@ -1,7 +1,5 @@
 ---
-
 ihtsdo_repository: snapshot
-
 mapping_app_name: "mapping-service"
 mapping_app_name_std: "mapping-service"
 mapping_admin_app_name: "mapping-service-admin"
@@ -32,7 +30,8 @@ mapping_xmx: "1500m"
 mapping_port: "10002"
 
 ##IMS/Auth
-
+mapping_admin_user: CHANGE_ME
+mapping_admin_password: CHANGE_ME
 mapping_ims_users_admin: "admin"
 mapping_ims_users_viewer: "guest,guest1,author1,reviewer1,guest2,author2,reviewer2,guest3,author3,reviewer3,admin1,admin2,admin3"
 
@@ -55,16 +54,16 @@ mysql_root_password: "CHANGE_ME2"
 mysql_databases:
    - "{{mapping_db_name}}"
    - "{{mapping_telemetry_db_name}}"
-   
+
 mapping_jdbc_url: "jdbc:mysql://{{mapping_db_host}}:{{mapping_db_port}}/{{mapping_db_name}}?autoReconnect=true"
 mapping_batch_size: 500
-mapping_default_batch_fetch_size: 500   
+mapping_default_batch_fetch_size: 500
 
 mysql_settings_innodb_buffer_pool_size: "400M"
 
 
 #mapping_mysql_root_pass: rooty
-#mapping_db_name: mapping 
+#mapping_db_name: mapping
 #mapping_db_user: mapping
 #mapping_db_pw: mapping
 #mapping_db_host: "127.0.0.1"
@@ -142,3 +141,6 @@ full_mapping_admin_pom_cmd: "{{ mapping_admin_pom_script }} >> {{ mapping_admin_
 script_dir: /opt/scripts/mapping
 new_restore_script: restore_mapping_s3.sh
 restore_cmd: "{{ script_dir }}/{{ new_restore_script }}"
+
+mapping_gmdnsftp_user: change_me
+mapping_gmdnsftp_password: change_me
