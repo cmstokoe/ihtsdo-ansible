@@ -26,7 +26,7 @@ mapping_host: "{{ inventory_hostname }}"
 app_name: "{{ mapping_app_name_std }}"
 mapping_user: "{{ mapping_app_name_std }}"
 supervisor_dir: "/etc/supervisor/conf.d/"
-mapping_xmx: "1500m"
+mapping_xmx: "4000m"
 mapping_port: "10002"
 
 ##IMS/Auth
