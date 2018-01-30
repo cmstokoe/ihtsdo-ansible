@@ -8,11 +8,6 @@
       - IHTSDO.aws
       - IHTSDO.nginx-standard
 
-  - hosts: snomed_release_service_web
-    sudo: true
-    roles:
-      - IHTSDO.snomed-release-service-web
-
   - hosts: release_validation_framework_api
     sudo: true
     roles:
@@ -20,8 +15,3 @@
       - IHTSDO.release-validation-framework-api
       - IHTSDO.nginx-standard
 
-  - hosts: release_validation_framework_web
-    sudo: true
-    roles:
-      - IHTSDO.release-validation-framework-web
-      

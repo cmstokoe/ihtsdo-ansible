@@ -4,4 +4,3 @@
     roles:
       #- IHTSDO.user-accounts
       - IHTSDO.snomed-release-service-api 
-      - IHTSDO.snomed-release-service-web

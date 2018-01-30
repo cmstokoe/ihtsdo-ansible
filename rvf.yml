@@ -6,7 +6,3 @@
       - IHTSDO.release-validation-framework-api
      # - IHTSDO.nginx-standard
 
-  - hosts: release_validation_framework_web
-    sudo: true
-    roles:
-      - IHTSDO.release-validation-framework-web

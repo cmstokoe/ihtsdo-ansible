@@ -5,8 +5,6 @@
       - IHTSDO.aws
       - IHTSDO.mysql
       - IHTSDO.snomed-release-service-api
-      - IHTSDO.snomed-release-service-web
       - IHTSDO.release-validation-framework-api
-      - IHTSDO.release-validation-framework-web
       - IHTSDO.nginx-standard
 
