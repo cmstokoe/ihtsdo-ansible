@@ -2,7 +2,6 @@
   - hosts: all
     sudo: true
     vars:
-      swapfile_size: 4GB
     roles:
       - ansible-swapfile-master   
 
