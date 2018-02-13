@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cp_cmd="/usr/bin/aws s3 cp "
+cp_cmd="/usr/local/bin/aws s3 cp --acl bucket-owner-full-control"
 
 # The S3 backup dir
 #s3_backup_dir={{s3_backup_dir | default('')}}
