@@ -16,3 +16,8 @@
 
 - name: Create config file in .aws
   template: src=s3config.j2 dest=~/.aws/config mode=0600
+
+- name: Install more recent version in /usr/local/bin
+  pip:
+    name: awscli
+    version: "{{ aws_cli_version }}"
