@@ -11,6 +11,9 @@
   apt: name=awscli state=present update_cache=yes cache_valid_time=300
   when: package_check_deb.rc == 1
 
+- name: Install python-pip
+  apt: name=python-pip state=present update_cache=yes cache_valid_time=300
+
 - name: Assures ~/.aws dir exists
   file: path=~/.aws state=directory
 
