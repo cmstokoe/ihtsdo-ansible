@@ -54,14 +54,10 @@ import_term_serv_sql: "{{import_term_serv_dataset}}/{{ import_term_serv_sql_name
 import_term_serv_indexes: "{{import_term_serv_dataset}}/{{ term_serv_index_dir }}"
 # The path to the import resources folder
 import_term_serv_resources: "{{import_term_serv_dataset}}/{{ term_serv_resources_dir }}"
-# The path to the import templates folder
-import_term_serv_templates: "{{import_term_serv_dataset}}/{{ term_serv_template_dir }}"
 
 
 #target dir for term_serv_indexes
 target_term_serv_indexes: "/opt/{{ term_serv_index_dir }}"
-#target dir for term_serv_templates
-target_term_serv_templates: "/opt/snomed-template-service/snomed-templates"
 
 traceability_database: traceability
 
