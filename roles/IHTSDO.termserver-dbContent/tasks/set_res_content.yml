@@ -3,7 +3,7 @@
 - name: make sure sql file exists
   stat: path={{import_term_serv_sql}}
   register: sqlimportfile
-- debug: msg="sqlimportfile  = {{import_term_serv_sql}}"  
+- debug: msg="sqlimportfile  = {{import_term_serv_sql}}"
 - debug: msg="sqlimportfile exists = {{sqlimportfile.stat.exists}}"
 - debug: msg="import_term_serv_indexes = {{import_term_serv_indexes}}"
 - debug: msg="term_serv_dir_resources = {{term_serv_dir_resources}}"
@@ -14,17 +14,17 @@
 - debug: msg="target_term_serv_indexes = {{target_term_serv_indexes}}"
 - debug: msg="target_term_serv_templates = {{target_term_serv_templates}}"
 
-- name: Remove {{term_serv_dir_resources}} 
+- name: Remove {{term_serv_dir_resources}}
   file: path={{term_serv_dir_resources}} state=absent
-  when: sqlimportfile.stat.exists == True  
+  when: sqlimportfile.stat.exists == True
 
 - name: Copy the {{import_term_serv_resources}}  dir to {{term_serv_dir}}
   command: cp -r {{import_term_serv_resources}} {{term_serv_dir}}
   when: sqlimportfile.stat.exists == True
 
-- name: Remove {{target_term_serv_indexes}} 
+- name: Remove {{target_term_serv_indexes}}
   file: path={{target_term_serv_indexes}} state=absent
-  when: sqlimportfile.stat.exists == True  
+  when: sqlimportfile.stat.exists == True
 
 - name: make sure termserver_indexes dir exists
   stat: path={{import_term_serv_indexes}}
@@ -40,30 +40,19 @@
   stat: path={{term_serv_dir_resources_indexes}}
   register: term_serv_dir_resources_indexes_dir
   when: import_term_serv_indexes_dir.stat.exists == false
-  
-- debug: msg="term_serv_dir_resources_indexes_dir = {{term_serv_dir_resources_indexes_dir}}"  
 
-- name: Remove {{target_term_serv_templates}} 
-  file: path={{target_term_serv_templates}} state=absent
-  when: sqlimportfile.stat.exists == True 
-  
-- name: make sure {{target_term_serv_templates}}  exists
-  file: path={{target_term_serv_templates}} state=directory     
+- debug: msg="term_serv_dir_resources_indexes_dir = {{term_serv_dir_resources_indexes_dir}}"
 
-- name: Copy the {{import_term_serv_templates}}  dir to {{target_term_serv_templates}}
-  command: cp -r {{import_term_serv_templates}} {{target_term_serv_templates}}
-  when: sqlimportfile.stat.exists == True
-  ignore_errors: yes 
 
-   
+
 #- debug: "move the existing term_serv resources indexes dir {{term_serv_dir_resources_indexes}} dir to {{target_term_serv_indexes}}"
-#  when: sqlimportfile.stat.exists == True and term_serv_dir_resources_indexes_dir.stat.exists == True  
-   
+#  when: sqlimportfile.stat.exists == True and term_serv_dir_resources_indexes_dir.stat.exists == True
+
 #- name: move the existing term_serv_dir_resources_indexes dir to target_term_serv_indexes
 #  command: mv {{term_serv_dir_resources_indexes}} {{target_term_serv_indexes}}
-#  when: sqlimportfile.stat.exists == True and term_serv_dir_resources_indexes_dir.stat.exists == True   
- 
-  
-   
+#  when: sqlimportfile.stat.exists == True and term_serv_dir_resources_indexes_dir.stat.exists == True
+
+
+
 - name: Link {{target_term_serv_indexes}} to {{term_serv_dir_resources}}
   file: path={{term_serv_dir_resources_indexes}} src={{target_term_serv_indexes}} state=link force=yes
