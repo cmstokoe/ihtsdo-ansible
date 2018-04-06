@@ -1,0 +1,18 @@
+---
+snowstorm_package_name: snowstorm
+snowstorm_install_location: /opt/snowstorm
+snowstorm_version: latest
+snowstorm_drools_version: master
+
+snowstorm_elastic_endpoint: http://search.snomed.local
+snowstorm_elastic_index_prefix: dev_
+snowstorm_classification_service_endpoint: https://dev-authoring.ihtsdotools.org/classification-service
+snowstorm_restapi_readonly: false
+
+snowstorm_activemq_broker: failover:tcp://dev-queues.snomed.local:61616
+snowstorm_activemq_username: change_me
+snowstorm_activemq_password: change_me
+snowstorm_activemq_prefix: dev-elastic
+
+snowstorm_cis_token: change_me
+snowstorm_ims_requiredrole: ROLE_ihtsdo-sca-author
