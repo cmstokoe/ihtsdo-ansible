@@ -1,0 +1,15 @@
+server.servlet.contextPath=/snowstorm/snomed-ct/v2
+ims-security.required-role={{ snowstorm_ims_requiredrole }}
+
+cis.token={{ snowstorm_cis_token }}
+snowstorm.rest-api.readonly={{ snowstorm_restapi_readonly }}
+# Elasticsearch connection details
+elasticsearch.urls={{ snowstorm_elastic_endpoint }}
+elasticsearch.index.prefix={{ snowstorm_elastic_index_prefix }}
+
+classification-service.url={{ snowstorm_classification_service_endpoint }}
+
+spring.activemq.broker-url={{ snowstorm_activemq_broker }}
+spring.activemq.user= {{ snowstorm_activemq_username }}
+spring.activemq.password={{ snowstorm_activemq_password }}
+jms.queue.prefix={{ snowstorm_activemq_prefix }}
