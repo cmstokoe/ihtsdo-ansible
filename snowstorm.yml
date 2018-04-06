@@ -1,0 +1,9 @@
+---
+  - hosts: elastic-termserver
+    sudo: true
+    roles:
+      - IHTSDO.repositories
+      - IHTSDO.oraclejava
+      - IHTSDO.aws
+      - IHTSDO.snowstorm
+      - IHTSDO.nginx-standard
