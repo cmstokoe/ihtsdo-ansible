@@ -6,7 +6,7 @@
      rf2json_s3_bucket_name: "s3://ms-authoring-clean/rf2json/{{unpacked_release_file_name}}"
      unpacked_release_file_name: SnomedCT_SE_Production_20170531T120000
      release_file_name: "{{unpacked_release_file_name}}.zip"
-     snapshot_release_s3_bucket_name: "s3://ire.published.release.ihtsdo/se/"
+     snapshot_release_s3_bucket_name: "s3://release-ihtsdo-prod-published/se/"
 
      config_xml: seConfig.xml.j2
      editionName: "Swedish"
