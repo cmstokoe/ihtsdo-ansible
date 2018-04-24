@@ -6,10 +6,12 @@
      dailybuild_url: https://release.ihtsdotools.org/api/v1/centers/us/products/snomed_ct_us_daily_build/builds/
      unpacked_release_file_name: SnomedCT_USExtensionRF2_PRODUCTION_20180901T120000Z
      release_file_name: "{{unpacked_release_file_name}}.zip"
-     config_xml: usConfig.xml.j2
+     # Use usConfig.xml.j2 for US edition release and usConfigAsExtn.xml.j2 for extension release build
+     config_xml: usConfigAsExtn.xml.j2
      editionName: "US"
      ihtsdo_repository: release  
-     #int_unpacked_release_file_name: "SnomedCT_InternationalRF2_Production_20170131T120000"  
+     # only need int release file for us extension build
+     int_unpacked_release_file_name: "SnomedCT_InternationalRF2_PRODUCTION_20180131T120000Z"  
      effectiveTime: 20180901
      expirationTime: 20190301
      # One date after the previous release
