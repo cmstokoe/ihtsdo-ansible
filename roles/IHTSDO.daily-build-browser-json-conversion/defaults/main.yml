@@ -27,7 +27,7 @@ release_file_name: "{{unpacked_release_file_name}}.zip"
 
 int_release_s3_backup_region: "eu-west-1"
 int_release_dir: "/opt/IntRelease"
-int_release_s3_bucket_name: s3://release-ihtsdo-prod-published/international/
+int_release_s3_bucket_name: s3://ire.published.release.ihtsdo/international/
 int_unpacked_release_file_name: ""
 int_release_file_name: "{{int_unpacked_release_file_name}}.zip"
 int_release_s3_download: "{{int_release_s3_bucket_name}}{{int_release_file_name}}"
@@ -35,7 +35,7 @@ int_release_snapshotFolder: "{{ int_release_dir }}/{{ int_unpacked_release_file_
 
 snapshot_get_release: False
 snapshot_release_s3_backup_region: "eu-west-1"
-snapshot_release_s3_bucket_name: "s3://release-ihtsdo-prod-published/se/"
+snapshot_release_s3_bucket_name: "s3://ire.published.release.ihtsdo/se/"
 snapshot_release_s3_download: "{{snapshot_release_s3_bucket_name}}{{release_file_name}}"
 
 
